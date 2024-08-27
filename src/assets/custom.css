@@ -1,0 +1,18 @@
+.custom-green-bg {
+    background-color: rgb(47, 161, 47);
+    border-bottom: 1px solid white;
+}
+.custom-anchor-btn {
+    background-color: rgb(47, 161, 47);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+.common-remove-button-bg {
+    background-color: transparent;
+    border: none;
+}
+.common_bg_aliceblue {
+    background-color: aliceblue;
+    min-height: 90vh
+}
