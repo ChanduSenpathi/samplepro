@@ -37,9 +37,8 @@ const formHandler = async () => {
     }
     if(itemId){
         try {
-            const response = await axios.put(`http://localhost:8000/jobs/${itemId}`, newObj);
-            router.push(`/jobs`)
-            console.log("hello");
+            await axios.put(`http://localhost:8000/jobs/${itemId}`, newObj);
+            route.push('http://localhost:8000/jobs')
         }catch(error) {
             console.log(error);
         }
@@ -47,7 +46,7 @@ const formHandler = async () => {
         
         try {
             const response = await axios.post("http://localhost:8000/jobs", newObj);
-            router.push(`http://localhost:8000/jobs/${response.data.id}`)
+            router.push(`/jobs`)
         }catch(error) {
             console.log(error);
         }

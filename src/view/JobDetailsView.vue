@@ -3,6 +3,7 @@ import { onMounted, reactive, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import jobs from "@/jobs.json"
 import axios from 'axios';
+import router from '@/router';
 const route = useRoute();
 const itemId = route.params.id; 
 
@@ -20,7 +21,18 @@ onMounted(async() =>{
     }finally {
         state.loading = false;
     }
+    console.log(state.details);
+    
 })
+
+const deleteJob = async(id) => {
+    try {
+        await axios.delete(`http://localhost:8000/jobs/${id}`);
+        router.push('/jobs');
+    }catch(err) {
+        console.log(err);
+    }
+}
 
 
 </script>
@@ -68,7 +80,7 @@ onMounted(async() =>{
                 <div class="p-4 rounded bg-white">
                     <h3>Manage Jobs</h3>
                     <RouterLink :to="`edit/${itemId}`" class="bg-success d-block  my-3 py-2 px-4 text-white rounded w-100 text-center">Edit Job</RouterLink>
-                    <RouterLink :to="`delete/${itemId}`" class="bg-danger d-block py-2 px-4 text-white rounded w-100 text-center">Delete Job</RouterLink>
+                    <button @click="deleteJob(itemId)" class="bg-danger border-0 d-block py-2 px-4 text-white rounded w-100 text-center">Delete Job</button>
                 </div>
             </div>
         </div>
